@@ -2,8 +2,6 @@
 
 The class "Digraph" contains the algorithms to calculate distance with a given route ("distanceFromRoute"), count total possible trips given a maximum amount of stops ("countTripsWithMaxStops"), calculate shortest distance between two towns ("shortestDistance"), and count total possible trips given a maximum amount of distance ("countTripsWithMaxDistance").
 
-Digraph has 3 constructors: Digraph(String routesStr), Digraph(Path filePath), and Digraph(String... routes).
-
 ## Testing
 Please add JUnit 4 to build path in order to run TestRunner for verifying test cases.
 
