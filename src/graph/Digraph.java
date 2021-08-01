@@ -47,6 +47,11 @@ public class Digraph {
 		nodes.get(start).add(new Edge(dest, distance));
 	}
 	
+	/**
+	 * Returns total distance required to complete the route. Returns -1 if route does not exist.
+	 * @param towns Towns needed to be visited by the route.
+	 * @return
+	 */
 	public int distanceFromRoute(char... towns) {
 		if(towns.length <= 1) return 0;
 		
@@ -69,6 +74,14 @@ public class Digraph {
 		return curDistance;
 	}
 	
+	/**
+	 * Uses Depth First Search to count the possible routes from start to destination with stops less than or equal to a maximum amount of stops.
+	 * @param start Starting town
+	 * @param dest Destination town
+	 * @param maxStops Maximum amount of stops
+	 * @param countLessThan If true, counts possible routes less than the maximum amount of stops. Otherwise, only routes equal to maxStops is counted.
+	 * @return
+	 */
 	public int countTripsWithMaxStops(char start, char dest, int maxStops, boolean countLessThan) {
 		int[] count = new int[1];
 		visitTownWithMaxStops(start, dest, 0, maxStops, count, countLessThan);
@@ -85,13 +98,19 @@ public class Digraph {
 		}
 	}
 	
+	/**
+	 * Uses Djikstra's algorithm to "relax" (or shorten) distance from each town by finding shorter routes.
+	 * @param start Starting town
+	 * @param dest Destination town
+	 * @return
+	 */
 	public int shortestDistance(char start, char dest) {
 		Map<Character, Integer> shortestDistanceMap = new HashMap<>();
 		for(char town : nodes.keySet())
 			shortestDistanceMap.put(town, Integer.MAX_VALUE);
 		
 		Queue<Character> q = new ArrayDeque<>();
-		Set<Character> set = new HashSet<>();
+		Set<Character> set = new HashSet<>(); // For checking if a town is already in queue
 		q.add(start);
 		set.add(start);
 		while(!q.isEmpty()) {
@@ -112,6 +131,13 @@ public class Digraph {
 		return shortestDistanceMap.get(dest) == Integer.MAX_VALUE ? -1 : shortestDistanceMap.get(dest);
 	}
 	
+	/**
+	 * Uses Depth First Search to count the of possible routes from start to destination with a distance less than the maximum distance.
+	 * @param start Starting town
+	 * @param dest Destination town
+	 * @param maxDistance Maximum distance
+	 * @return 
+	 */
 	public int countTripsWithMaxDistance(char start, char dest, int maxDistance) {
 		int[] count = new int[1];
 		visitTownWithMaxDistance(start, dest, 0, maxDistance, count);
