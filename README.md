@@ -9,6 +9,5 @@ How to add JUnit 4 to Eclipse:
 * Step 1: On Eclipse, right click on project > "Build Path" > "Add Libraries..."
 * Step 2: Select "JUnit" and click "Next >"
 * Step 3: Select "JUnit 4" and click "Finish"
-* Step 4: Click "Apply and Close"
 
 "input.txt" is used as the input file.
