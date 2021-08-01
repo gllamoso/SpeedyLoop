@@ -54,7 +54,6 @@ public class Digraph {
 	 */
 	public int distanceFromRoute(char... towns) {
 		if(towns.length <= 1) return 0;
-		
 		int curDistance = 0;
 		
 		for(int nextTownIdx = 1; nextTownIdx < towns.length; nextTownIdx++) {
@@ -99,7 +98,7 @@ public class Digraph {
 	}
 	
 	/**
-	 * Uses Djikstra's algorithm to "relax" (or shorten) distance from each town by finding shorter routes.
+	 * Uses Djikstra's algorithm to "relax" (or shorten) distances from each town by finding shorter routes. Returns -1 if route does not exist.
 	 * @param start Starting town
 	 * @param dest Destination town
 	 * @return
@@ -132,7 +131,7 @@ public class Digraph {
 	}
 	
 	/**
-	 * Uses Depth First Search to count the of possible routes from start to destination with a distance less than the maximum distance.
+	 * Uses Depth First Search to count the possible routes from start to destination with a distance less than the maximum.
 	 * @param start Starting town
 	 * @param dest Destination town
 	 * @param maxDistance Maximum distance
@@ -148,7 +147,7 @@ public class Digraph {
 		if(curDistance >= maxDistance) return;
 		
 		for(Edge e: nodes.get(town)) {
-			if(curDistance + e.distance < maxDistance && e.dest == dest)
+			if(e.dest == dest && curDistance + e.distance < maxDistance)
 				count[0]++;
 			visitTownWithMaxDistance(e.dest, dest, curDistance + e.distance, maxDistance, count);
 		}
