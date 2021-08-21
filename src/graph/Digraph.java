@@ -30,7 +30,7 @@ public class Digraph {
 	}
 
 	public Digraph(String... routes) {
-		for (String route : routes)
+		for(String route : routes)
 			makeRoute(route);
 	}
 
@@ -53,7 +53,6 @@ public class Digraph {
 	 * @return
 	 */
 	public int distanceFromRoute(char... towns) {
-		if(towns.length <= 1) return 0;
 		int curDistance = 0;
 		
 		for(int nextTownIdx = 1; nextTownIdx < towns.length; nextTownIdx++) {
@@ -113,7 +112,7 @@ public class Digraph {
 		q.add(start);
 		set.add(start);
 		while(!q.isEmpty()) {
-			char curTown = q.poll();
+			final char curTown = q.poll();
 			set.remove(curTown);
 			final int curDistance = shortestDistanceMap.get(curTown) == Integer.MAX_VALUE ? 0 : shortestDistanceMap.get(curTown);
 			for(Edge e : nodes.get(curTown)) {
